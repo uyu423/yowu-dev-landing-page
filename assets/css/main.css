@@ -2752,7 +2752,7 @@ body.is-covered #wrapper {
 
 #header {
   text-align: center;
-  padding: 6em 0 4em 0;
+  padding: 6em 0 0 0;
 }
 
 #header h1 {
@@ -2774,9 +2774,14 @@ body.is-covered #wrapper {
   width: 10em;
 }
 
+#text {
+  padding-bottom: 2em;
+  text-align: center;
+}
+
 @media screen and (max-width: 1280px) {
   #header {
-    padding: 4em 0 2em 0;
+    padding: 4em 0 0 0;
   }
 }
 
