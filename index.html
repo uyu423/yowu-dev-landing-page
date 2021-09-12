@@ -17,6 +17,7 @@
     <meta property="og:image" content="images/ogimage.jpg" />
 		<meta property="og:type" content="website" />
 		<meta property="fb:app_id" content="561418221155382" />
+		<link rel="stylesheet" href="assets/css/aos.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="shortcut icon" href="images/favicon.ico"/>	
 		<style>
@@ -24,6 +25,9 @@
 				font-size: small;
 			}
 		</style>
+		<script>
+			  // AOS.init();
+		</script>
 	</head>
 	<body>
 
@@ -31,7 +35,7 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header">
+					<header id="header" class="aos-item", data-aos="fade-up">
 						<span class="avatar"><img src="images/yowu.jpg" alt="" /></span>
 						<h1 style="margin-bottom: 0.5em;">Software Engineer <strong>Yowu</strong>. <br/>This is <strong>yowu.dev. </strong><br/>All rights reserved.</h1>
 						<h1>Thank you.</h1>
@@ -62,24 +66,24 @@
 								<small>EMAIL</small>
 							</li>
 						</ul>
-					</header>
-
 						<section id="text">
 							<!-- <p>
 								I am a Web Backend Developer. I have various experiences as an IT service and startup company developer. I have experience in softwar designing, developing, and operating production services using Node.js, Redis, MySQL, AWS, Git, etc. I'm always thinking about a highly scalable and maintainable backend software architecture.
 							</p> -->
 							<p>Working at <strong><a href="https://www.navercorp.com/">NAVER</a></strong> / Backend Developer / Robust back-end architecture ❤️</p>
 						</section>
+					</header>
+
 
 				<!-- Main -->
-					<section id="main">
+					<section id="main" class="aos-item" data-aos="fade-up">
 
 						<!-- Thumbnails -->
 						<!-- Thumbnail Generater: http://makethumbnails.com/#dropzone -->
 						<!-- Options: width 360px, highest compress quailty -->
 							<section class="thumbnails">
 								<div>
-									<a href="images/fulls/y49.jpeg">
+									<a href="images/fulls/y49.jpeg" class="aos-item" data-aos="fade-right">
 										<img src="images/thumbnails/y49_tn.jpg" alt="" />
 										<h3>One day in the summer at NAVER<br/> Green Factory in 2021</h3>
 									</a>
@@ -264,7 +268,7 @@
 
 					</section>
 
-					<div class="fb-comments" data-href="https://yowu.dev" data-width="100%" data-numposts="5"  data-colorscheme="dark"></div>
+					<div class="fb-comments aos-item" data-aos="fade-up" data-href="https://yowu.dev" data-width="100%" data-numposts="5"  data-colorscheme="dark"></div>
 
 				<!-- Footer -->
 					<footer id="footer">
@@ -276,6 +280,7 @@
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/aos.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/main.js"></script>
 			<div id="fb-root"></div>
