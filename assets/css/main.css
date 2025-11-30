@@ -498,7 +498,7 @@ a {
   flex: 1;
   display: flex;
   justify-content: flex-end;
-  gap: 5rem;
+  gap: 3rem; /* 5rem -> 3rem 간격 조정 */
 }
 
 .stat-item {

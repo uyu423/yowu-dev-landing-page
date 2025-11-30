@@ -9,19 +9,36 @@
 		/>
 		<meta
 			name="description"
-			content="Software Engineer Yowu. Backend Developer focused on robust architecture."
+			content="Software Engineer Yowu. Backend Developer focused on robust architecture. Also an Amateur Drummer."
 		/>
+		<meta name="author" content="Yowu" />
+		<link rel="canonical" href="https://yowu.dev" />
 
 		<!-- Open Graph -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://yowu.dev" />
-		<meta property="og:site_name" content="Yowu.dev" />
+		<meta property="og:site_name" content="yowu.dev" />
 		<meta property="og:title" content="Yowu - Backend Developer" />
 		<meta
 			property="og:description"
-			content="Working at NAVER / Backend Developer / Robust back-end architecture"
+			content="Working at NAVER / Backend Developer / Robust back-end architecture / Amateur Drummer"
 		/>
-		<meta property="og:image" content="images/ogimage.jpg" />
+		<meta
+			property="og:image"
+			content="https://yowu.dev/images/ogimage.jpg"
+		/>
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Yowu - Backend Developer" />
+		<meta
+			name="twitter:description"
+			content="Backend Developer specializing in high-traffic systems. Working at NAVER."
+		/>
+		<meta
+			name="twitter:image"
+			content="https://yowu.dev/images/ogimage.jpg"
+		/>
 
 		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,20 +62,8 @@
 		<!-- Sticky Navigation -->
 		<nav id="navbar" class="navbar">
 			<div class="container nav-container">
-				<a href="#" class="nav-logo">Yowu.dev</a>
-				<ul class="nav-links">
-					<li><a href="#about">About</a></li>
-					<li><a href="#skills">Skills</a></li>
-					<li><a href="#projects">Projects</a></li>
-					<li>
-						<a href="https://resume.yowu.dev" target="_blank"
-							>Resume</a
-						>
-					</li>
-				</ul>
-				<div class="nav-toggle">
-					<i class="fa-solid fa-bars"></i>
-				</div>
+				<a href="#" class="nav-logo">yowu.dev</a>
+				<!-- Nav Links Removed for Simplicity -->
 			</div>
 		</nav>
 
@@ -198,15 +203,23 @@
 					<span class="section-label">/ ABOUT ME</span>
 					<h2>
 						Engineering scalable systems<br />
-						with passion since 2016
+						with passion since 2015
 					</h2>
 					<p>
-						Currently developing high-traffic commerce backend at
-						<strong>NAVER</strong> using <strong>Kotlin</strong> &
-						<strong>Spring Boot</strong>.<br />
-						Expertise in building robust architectures with
-						<strong>Kubernetes</strong> and
-						<strong>Kafka</strong>.<br />
+						Currently developing high-traffic vertical commerce
+						backend at
+						<a
+							href="https://www.navercorp.com/"
+							target="_blank"
+							class="text-link"
+							><strong>NAVER</strong></a
+						>
+						using <strong>Kotlin</strong>,
+						<strong>Spring Boot</strong> &
+						<strong>WebFlux</strong>.<br />
+						Expertise in
+						<strong>designing scalable architecture</strong> &
+						<strong>building robust backend systems</strong>.<br />
 						Active community contributor sharing insights via 400+
 						tech posts.
 					</p>
@@ -221,12 +234,22 @@
 
 				<div class="stats-numbers">
 					<div class="stat-item">
-						<span class="number" data-target="10">0</span>
+						<span class="number" data-target="10" data-suffix="+"
+							>0</span
+						>
 						<span class="label">Years of<br />Experience</span>
 					</div>
 					<div class="stat-item">
-						<span class="number" data-target="400">0</span>
+						<span class="number" data-target="400" data-suffix="+"
+							>0</span
+						>
 						<span class="label">Tech Posts<br />Written</span>
+					</div>
+					<div class="stat-item">
+						<span class="number" data-target="10" data-suffix="+"
+							>0</span
+						>
+						<span class="label">Public<br />Tech Talks</span>
 					</div>
 				</div>
 			</div>
@@ -250,7 +273,7 @@
 							languages.txt
 						</div>
 						<div class="terminal-output">
-							Java, Kotlin, Python, JavaScript, TypeScript, Go
+							Kotlin, Java, TypeScript, JavaScript, Python
 						</div>
 
 						<div class="terminal-line">
@@ -258,7 +281,7 @@
 							frameworks.txt
 						</div>
 						<div class="terminal-output">
-							Spring Boot, Django, FastAPI, React, Node.js
+							Spring Boot, WebFlux, Node.js, Next.js, React.js
 						</div>
 
 						<div class="terminal-line">
@@ -266,8 +289,15 @@
 							infrastructure.txt
 						</div>
 						<div class="terminal-output">
-							AWS, Kubernetes, Docker, Kafka, Redis, MySQL,
+							Linux, AWS, Docker, Kubernetes, Redis, Kafka, MySQL,
 							MongoDB
+						</div>
+
+						<div class="terminal-line">
+							<span class="prompt">yowu@dev:~$</span> cat misc.txt
+						</div>
+						<div class="terminal-output">
+							DevOps, Agile, HHKB, Drum, Electric Guitar
 						</div>
 
 						<div class="terminal-line">
@@ -282,66 +312,94 @@
 		<!-- Projects Section -->
 		<section id="projects" class="projects-section reveal-section">
 			<div class="container">
-				<span class="section-label">/ PROJECTS</span>
-				<h2 class="section-title">Featured Projects</h2>
+				<span class="section-label">/ EXPERIENCE</span>
+				<h2 class="section-title">Career Highlights</h2>
 
 				<div class="projects-grid">
-					<!-- Project 1 -->
+					<!-- Project 1: NAVER Vertical Shopping -->
 					<div class="project-card">
 						<div class="project-content">
 							<div class="project-icon">
-								<i class="fa-solid fa-server"></i>
+								<i class="fa-solid fa-bag-shopping"></i>
 							</div>
-							<h3>Commerce Platform Migration</h3>
+							<h3>NAVER Vertical Shopping</h3>
 							<p>
-								Monolith to Microservices migration for
-								high-traffic commerce platform. Improved
-								scalability and reduced deployment time by 60%.
+								Developing backend API and BFF for Naver Plus
+								Store. Designing and implementing service APIs
+								for shopping apps, focusing on stability and
+								legacy system improvement.
 							</p>
 							<div class="project-tags">
-								<span>Spring Cloud</span>
-								<span>K8s</span>
-								<span>Kafka</span>
-							</div>
-						</div>
-					</div>
-
-					<!-- Project 2 -->
-					<div class="project-card">
-						<div class="project-content">
-							<div class="project-icon">
-								<i class="fa-solid fa-bolt"></i>
-							</div>
-							<h3>Real-time Event Processor</h3>
-							<p>
-								High-throughput event processing system handling
-								10k+ events/sec. Implemented using reactive
-								programming patterns.
-							</p>
-							<div class="project-tags">
+								<span>Kotlin</span>
+								<span>Spring Boot</span>
 								<span>WebFlux</span>
-								<span>Redis</span>
-								<span>Netty</span>
+								<span>OpenSearch</span>
 							</div>
 						</div>
 					</div>
 
-					<!-- Project 3 -->
+					<!-- Project 2: NAVER Shopping Live -->
 					<div class="project-card">
 						<div class="project-content">
 							<div class="project-icon">
-								<i class="fa-solid fa-code-branch"></i>
+								<i class="fa-solid fa-video"></i>
 							</div>
-							<h3>DevOps Pipeline Automation</h3>
+							<h3>NAVER Shopping Live</h3>
 							<p>
-								Automated CI/CD pipeline establishment.
-								Integrated security scanning and automated
-								canary deployments.
+								Led the development of video commerce platform.
+								Built <strong>Short-form</strong> service &
+								<strong>AI-powered highlight</strong> generation
+								pipeline using <strong>Kafka</strong> and
+								<strong>CLOVA API</strong>.
 							</p>
 							<div class="project-tags">
-								<span>Jenkins</span>
-								<span>ArgoCD</span>
-								<span>Terraform</span>
+								<span>Java</span>
+								<span>Spring Boot</span>
+								<span>Kafka</span>
+								<span>K8s</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Project 3: Yanolja -->
+					<div class="project-card">
+						<div class="project-content">
+							<div class="project-icon">
+								<i class="fa-solid fa-plane-departure"></i>
+							</div>
+							<h3>Yanolja R&D</h3>
+							<p>
+								Served as backend developer for global
+								accommodation/leisure OTA. Contributed to
+								building scalable systems for handling
+								large-scale user traffic.
+							</p>
+							<div class="project-tags">
+								<span>AWS</span>
+								<span>Node.js</span>
+								<span>Python</span>
+								<span>Microservices</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Project 4: Plating -->
+					<div class="project-card">
+						<div class="project-content">
+							<div class="project-icon">
+								<i class="fa-solid fa-utensils"></i>
+							</div>
+							<h3>Plating</h3>
+							<p>
+								Backend development & Data engineering for
+								Chef's dish delivery service. Built API servers
+								and data pipelines to support rapid business
+								growth.
+							</p>
+							<div class="project-tags">
+								<span>Node.js</span>
+								<span>AWS</span>
+								<span>Data Engineering</span>
 							</div>
 						</div>
 					</div>

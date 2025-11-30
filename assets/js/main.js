@@ -139,29 +139,30 @@
             hasCounted = true;
 
             const counters = document.querySelectorAll('.number');
-            const speed = 200; // The lower the slower
+            const duration = 2000; // 2초 동안 카운팅
 
             counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
+                const target = +counter.getAttribute('data-target');
+                const suffix = counter.getAttribute('data-suffix') || "+"; // 접미사 (기본값 +)
+                let startTimestamp = null;
 
-                    // Lower increment for smoother animation on small numbers
-                    const inc = target / speed;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
 
-                    if (count < target) {
-                        // Check if we reached target to avoid overshooting
-                        if (Math.ceil(count + inc) >= target) {
-                            counter.innerText = target + "+";
-                        } else {
-                            counter.innerText = Math.ceil(count + inc);
-                            setTimeout(updateCount, 20);
-                        }
+                    // Ease Out 효과 (천천히 감속)
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+
+                    counter.innerText = Math.floor(easeProgress * target);
+
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
                     } else {
-                        counter.innerText = target + "+";
+                        counter.innerText = target + suffix;
                     }
                 };
-                updateCount();
+
+                window.requestAnimationFrame(step);
             });
         }
 
