@@ -25,7 +25,7 @@
 
   /* Fonts */
   --font-main: "Inter", sans-serif;
-  --font-mono: "Menlo", "Monaco", "Courier New", monospace;
+  --font-mono: "Ubuntu Mono", "Menlo", "Monaco", "Courier New", monospace;
 }
 
 /* Reset */
@@ -40,7 +40,7 @@
 html {
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory; /* Full page scroll snap */
-  scroll-padding-top: var(--nav-height);
+  scroll-padding-top: 0;
 }
 
 body {
@@ -86,7 +86,7 @@ a {
 
 /* Navbar */
 .navbar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -800,8 +800,22 @@ a {
   }
 
   .stats-numbers {
-    gap: 2rem;
-    flex-wrap: wrap; /* 모바일에서 줄바꿈 허용 */
+    gap: 1rem;
+    flex-wrap: nowrap; /* 모바일에서 줄바꿈 금지 */
+    justify-content: space-between; /* 양쪽 정렬로 균등 배치 */
+  }
+
+  .stat-item .number {
+    font-size: 2rem; /* 숫자 크기 축소 */
+  }
+
+  .stat-item .label {
+    font-size: 0.8rem; /* 라벨 크기 축소 */
+  }
+
+  .stats-info h2,
+  .section-title {
+    font-size: 2rem; /* 모바일 타이틀 크기 축소 (3rem -> 2rem) */
   }
 }
 

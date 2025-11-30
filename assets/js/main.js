@@ -4,17 +4,17 @@
     document.addEventListener('DOMContentLoaded', function () {
 
         // ==========================================
-        // 0. Sticky Navbar Logic
+        // 0. Sticky Navbar Logic (Disabled)
         // ==========================================
-        const navbar = document.getElementById('navbar');
+        // const navbar = document.getElementById('navbar');
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // window.addEventListener('scroll', () => {
+        //     if (window.scrollY > 50) {
+        //         navbar.classList.add('scrolled');
+        //     } else {
+        //         navbar.classList.remove('scrolled');
+        //     }
+        // });
 
         // ==========================================
         // 1. Typing Effect (Hero Section)
