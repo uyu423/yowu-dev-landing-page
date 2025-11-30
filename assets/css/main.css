@@ -64,6 +64,7 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 a {
@@ -694,7 +695,7 @@ a {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
@@ -893,6 +894,15 @@ a {
     padding: 2rem;
   }
 
+  .container {
+    padding: 0 1rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
   .stats-info h2,
   .section-title {
     font-size: 1.8rem;
@@ -921,5 +931,64 @@ a {
 @media (max-width: 480px) {
   .hero h1 {
     font-size: 2rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .stats-info {
+    padding: 1.5rem;
+  }
+}
+
+/* Very Small Mobile (360px and below) */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+  }
+
+  .stats-info {
+    padding: 1.25rem;
+  }
+
+  .stats-info h2,
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .stats-numbers {
+    gap: 0.75rem;
+  }
+
+  .stat-item .number {
+    font-size: 1.75rem;
+  }
+
+  .stat-item .label {
+    font-size: 0.75rem;
+  }
+
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .btn-pill {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .btn-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 }
