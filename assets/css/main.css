@@ -149,7 +149,7 @@ a {
 
 /* Video Background */
 .video-background {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -433,7 +433,7 @@ a {
 
 /* Stats Section */
 .stats-section {
-  background-color: var(--bg-secondary);
+  background-color: transparent;
   padding: 8rem 0;
   border-top: 1px solid var(--glass-border);
   position: relative;
@@ -442,13 +442,19 @@ a {
 
 .stats-container {
   display: block; /* Flex 제거하고 블록으로 변경 */
-  max-width: 800px; /* 가독성을 위해 너비 제한 */
+  max-width: 1200px; /* 가독성을 위해 너비 제한 */
   margin: 0 auto; /* 중앙 정렬 */
 }
 
 .stats-info {
   width: 100%;
   max-width: 100%;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
 }
 
 .section-label {
@@ -506,9 +512,9 @@ a {
   display: flex;
   justify-content: flex-start; /* 왼쪽 정렬 */
   gap: 4rem;
-  margin-top: 4rem; /* 위쪽 여백 추가 */
-  border-top: 1px solid var(--glass-border); /* 구분선 추가 */
+  margin-top: 3rem; /* 위쪽 여백 조정 */
   padding-top: 3rem;
+  border-top: 1px solid var(--glass-border); /* 구분선 추가 */
 }
 
 .stat-item {
@@ -537,8 +543,35 @@ a {
 
 /* Skills Section (Terminal Style) */
 .skills-section {
+  position: relative;
   padding: 8rem 0;
-  background-color: var(--bg-color);
+  background-color: transparent;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.skills-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.skills-video-overlay,
+.stats-video-overlay,
+.projects-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 12, 0.4) 0%,
+    rgba(10, 10, 12, 0.85) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
 }
 
 .terminal-window {
@@ -550,6 +583,8 @@ a {
   font-family: var(--font-mono);
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .terminal-header {
@@ -630,8 +665,9 @@ a {
 /* Projects Section */
 .projects-section {
   padding: 8rem 0;
-  background-color: var(--bg-secondary);
+  background-color: transparent;
   border-top: 1px solid var(--glass-border);
+  position: relative;
 }
 
 .section-title {
@@ -647,7 +683,7 @@ a {
 }
 
 .project-card {
-  background-color: var(--glass-bg);
+  background-color: var(--bg-secondary);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   padding: 2rem;
@@ -658,7 +694,7 @@ a {
 
 .project-card:hover {
   transform: translateY(-5px);
-  background-color: var(--glass-hover);
+  background-color: rgba(28, 28, 31, 0.95);
   border-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
@@ -711,6 +747,8 @@ a {
   border-top: 1px solid var(--glass-border);
   font-size: 0.9rem;
   color: var(--text-muted);
+  position: relative;
+  z-index: 10;
 }
 
 .footer .container {
@@ -843,6 +881,18 @@ a {
 
   .stat-item .label {
     font-size: 0.8rem; /* 라벨 크기 축소 */
+  }
+
+  .stats-section {
+    padding: 4rem 0; /* 모바일에서 상하 패딩 축소 (8rem -> 4rem) */
+  }
+
+  .stats-container {
+    padding: 0 1rem; /* 모바일에서 좌우 패딩 축소 (2rem -> 1rem) */
+  }
+
+  .stats-info {
+    padding: 2rem;
   }
 
   .stats-info h2,
