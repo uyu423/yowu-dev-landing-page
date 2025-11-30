@@ -153,7 +153,8 @@
                     // Ease Out 효과 (천천히 감속)
                     const easeProgress = 1 - Math.pow(1 - progress, 3);
 
-                    counter.innerText = Math.floor(easeProgress * target);
+                    const currentCount = Math.floor(easeProgress * target);
+                    counter.innerText = currentCount + suffix; // 카운팅 중에도 접미사 유지
 
                     if (progress < 1) {
                         window.requestAnimationFrame(step);

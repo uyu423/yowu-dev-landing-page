@@ -432,15 +432,14 @@ a {
 }
 
 .stats-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 4rem;
+  display: block; /* Flex 제거하고 블록으로 변경 */
+  max-width: 800px; /* 가독성을 위해 너비 제한 */
+  margin: 0 auto; /* 중앙 정렬 */
 }
 
 .stats-info {
-  flex: 1;
-  max-width: 500px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .section-label {
@@ -495,10 +494,12 @@ a {
 }
 
 .stats-numbers {
-  flex: 1;
   display: flex;
-  justify-content: flex-end;
-  gap: 3rem; /* 5rem -> 3rem 간격 조정 */
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  gap: 4rem;
+  margin-top: 4rem; /* 위쪽 여백 추가 */
+  border-top: 1px solid var(--glass-border); /* 구분선 추가 */
+  padding-top: 3rem;
 }
 
 .stat-item {
@@ -507,13 +508,15 @@ a {
 }
 
 .stat-item .number {
-  font-size: 4.5rem;
+  font-size: 3.5rem; /* 4.5rem -> 3.5rem 살짝 축소 */
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1;
   margin-bottom: 0.5rem;
   letter-spacing: -2px;
-  font-variant-numeric: tabular-nums; /* Prevent jitter during counting */
+  font-variant-numeric: tabular-nums;
+  min-width: auto; /* 고정 너비 해제 */
+  text-align: left; /* 왼쪽 정렬 */
 }
 
 .stat-item .label {
@@ -641,6 +644,7 @@ a {
   padding: 2rem;
   transition: all 0.3s ease;
   height: 100%;
+  display: block; /* For a tags */
 }
 
 .project-card:hover {
@@ -727,6 +731,13 @@ a {
   transform: translateY(0);
 }
 
+/* Presentations Section */
+.presentations-section {
+  padding: 8rem 0;
+  background-color: var(--bg-color);
+  border-top: 1px solid var(--glass-border);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .hero h1 {
@@ -781,18 +792,21 @@ a {
     display: none;
   }
 
-  .stat-item .number {
-    font-size: 3.5rem;
-  }
+  /* .stat-item .number 스타일 제거 (위에서 통합됨) */
 
   .terminal-body {
     padding: 15px;
     font-size: 0.85rem;
   }
+
+  .stats-numbers {
+    gap: 2rem;
+    flex-wrap: wrap; /* 모바일에서 줄바꿈 허용 */
+  }
 }
 
 @media (max-width: 480px) {
   .hero h1 {
-    font-size: 1.8rem; /* 더 작은 화면 대응 */
+    font-size: 2rem; /* 더 작은 화면 대응 */
   }
 }
