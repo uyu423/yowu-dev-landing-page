@@ -100,6 +100,15 @@
             };
 
             activeVideo.addEventListener('ended', handleVideoEnd);
+
+            // Page Visibility API to save resources
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    activeVideo.pause();
+                } else {
+                    activeVideo.play().catch(e => console.error('Resume play error:', e));
+                }
+            });
         }
 
         // ==========================================

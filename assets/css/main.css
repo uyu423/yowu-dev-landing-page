@@ -307,10 +307,10 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.65rem 1.35rem; /* Reduced by ~10% */
   border-radius: 99px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Reduced by ~10% */
   backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid transparent;
@@ -348,12 +348,12 @@ a {
 }
 
 .btn-icon {
-  width: 48px;
-  height: 48px;
+  width: 44px; /* 48px -> 44px (~10% smaller) */
+  height: 44px; /* 48px -> 44px (~10% smaller) */
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.25rem;
+  font-size: 1.15rem; /* 1.25rem -> 1.15rem (~10% smaller) */
   color: var(--text-secondary);
   border-radius: 50%;
   background-color: transparent;
@@ -784,8 +784,8 @@ a {
   }
 
   .btn-pill {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
+    padding: 0.55rem 1.1rem; /* Reduced by ~10% */
+    font-size: 0.85rem; /* Reduced by ~10% */
   }
 
   .divider-vertical {
