@@ -6,27 +6,29 @@
   /* Colors */
   --bg-color: #161618;
   --bg-secondary: #1c1c1f;
-  
+
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.75);
   --text-muted: rgba(255, 255, 255, 0.5);
-  
+
   --accent-color: #3b82f6; /* Lighter Blue for Dark Mode */
   --accent-hover: #2563eb;
-  
+
   --glass-bg: rgba(255, 255, 255, 0.1);
   --glass-border: rgba(255, 255, 255, 0.15);
   --glass-hover: rgba(255, 255, 255, 0.2);
-  
+
   /* Layout */
   --container-width: 1140px;
-  
+
   /* Fonts */
-  --font-main: 'Inter', sans-serif;
+  --font-main: "Inter", sans-serif;
 }
 
 /* Reset */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -72,6 +74,8 @@ a {
   width: 100%;
   height: 100%;
   z-index: 0;
+  background-color: #000; /* Fade out 시 검정 배경 */
+  overflow: hidden; /* 블러 효과로 인한 테두리 번짐 방지 */
 }
 
 .video-background video {
@@ -81,6 +85,16 @@ a {
   position: absolute;
   top: 0;
   left: 0;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+
+  /* 가독성 개선을 위한 필터 효과 */
+  filter: brightness(0.5) blur(4px) grayscale(0.2);
+  transform: scale(1.05); /* 블러로 인한 테두리 깨짐 방지를 위해 약간 확대 */
+}
+
+.video-background video.fade-out {
+  opacity: 0;
 }
 
 .video-overlay {
@@ -89,12 +103,13 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
+  /* 기존 그라데이션 오버레이 유지 (더 어둡게 조정 가능) */
   background: linear-gradient(
     to bottom,
-    rgba(22, 22, 24, 0.4) 0%,
-    rgba(22, 22, 24, 0.8) 100%
+    rgba(10, 10, 12, 0.5) 0%,
+    /* 상단 어둡게 */ rgba(10, 10, 12, 0.9) 100% /* 하단 더 어둡게 */
   );
-  backdrop-filter: blur(5px);
+  z-index: 1; /* 비디오 위에 오버레이 */
 }
 
 /* Hero Content */
@@ -137,7 +152,7 @@ a {
   font-weight: 800;
   margin-bottom: 1.5rem;
   letter-spacing: -2px;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .hero h1 .highlight {
@@ -153,13 +168,13 @@ a {
   margin-bottom: 3rem;
   max-width: 540px;
   font-weight: 400;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-desc strong {
   color: var(--text-primary);
   font-weight: 600;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Link Group (Unified) */
@@ -203,14 +218,14 @@ a {
 
 .btn-pill.secondary:hover {
   background-color: var(--glass-hover);
-  border-color: rgba(255,255,255,0.3);
+  border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
 }
 
 .divider-vertical {
   width: 1px;
   height: 24px;
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   margin: 0 0.5rem;
 }
 
@@ -263,11 +278,13 @@ a {
   animation: fadeIn 0.2s forwards;
   pointer-events: none;
   font-weight: 500;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Tooltip Arrow */
 [data-tooltip]:hover::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 100%;
   left: 50%;
@@ -278,10 +295,13 @@ a {
   opacity: 0;
   animation: fadeIn 0.2s forwards;
   pointer-events: none;
+  z-index: 10;
 }
 
 @keyframes fadeIn {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Stats Section */
@@ -329,6 +349,33 @@ a {
   line-height: 1.7;
 }
 
+/* Link Arrow Style Improvement */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 2px;
+  margin-top: 1.5rem; /* Add spacing from text */
+  transition: all 0.3s ease;
+}
+
+.link-arrow:hover {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+  gap: 0.75rem; /* Icon moves slightly */
+}
+
+.link-arrow i {
+  transition: transform 0.3s ease;
+}
+
+.link-arrow:hover i {
+  transform: translateX(3px);
+}
+
 .stats-numbers {
   flex: 1;
   display: flex;
@@ -362,12 +409,12 @@ a {
   .hero h1 {
     font-size: 3.5rem;
   }
-  
+
   .stats-container {
     flex-direction: column;
     gap: 4rem;
   }
-  
+
   .stats-numbers {
     justify-content: flex-start;
     width: 100%;
@@ -384,20 +431,20 @@ a {
   .hero h1 {
     font-size: 2.75rem;
   }
-  
+
   .hero-desc {
     font-size: 1.1rem;
   }
-  
+
   .link-group {
     gap: 0.75rem;
   }
-  
+
   .btn-pill {
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
   }
-  
+
   .divider-vertical {
     display: none; /* 모바일에서는 구분선 숨기고 줄바꿈 자연스럽게 */
     width: 100%;

@@ -1,19 +1,20 @@
 # Project Context
 - Project Name: yowu.dev Landing Page
 - Description: Backend Developer Yowu의 개인 포트폴리오 랜딩 페이지.
-- Base Template: Visualize by TEMPLATED (Legacy HTML5/CSS3 template).
+- Current Design: Modern Dark Theme (Webflow inspired), Video Background.
 
 # Tech Stack
-- Core: HTML5, CSS3 (Float based grid), JavaScript (ES5+).
-- Libraries: jQuery, Skel.js, Poptrox (Lightbox).
+- Core: HTML5, CSS3 (Flexbox/Grid, Variables, Glassmorphism), Vanilla JavaScript (ES6+).
+- Libraries: FontAwesome (Icons), Google Fonts (Inter).
 - Hosting: GitHub Pages (Static).
+- **REMOVED**: jQuery, skel.js, Poptrox (Legacy libraries removed).
 
 # Coding Rules
 
 ## General
 - **Language**: 모든 대화와 주석은 **한국어(Korean)**를 사용하십시오.
 - **Indentation**: 
-  - HTML/JS: **Tab** 사용 (기존 컨벤션 유지).
+  - HTML/JS: **Tab** 사용.
   - CSS/JSON/YAML: **2 Spaces** 사용.
 
 ## HTML
@@ -22,13 +23,14 @@
 - SEO를 위한 메타 태그 최적화를 고려하십시오.
 
 ## CSS
-- 기존 코드는 `float` 기반의 그리드 시스템(`skel.js`)을 사용 중입니다. 기존 레이아웃을 수정할 때는 이를 존중하되, **새로운 컴포넌트**를 추가할 때는 **Flexbox** 또는 **CSS Grid**를 사용하여 모던하게 구현하십시오.
-- 반응형 디자인(Media Queries)을 항상 고려하십시오.
+- **Layout**: Flexbox 및 CSS Grid를 사용하여 모던하고 반응형에 최적화된 레이아웃을 구현하십시오.
+- **Theme**: Dark Theme 기반 (`--bg-color: #161618`), Blue Accent (`--accent-color: #3b82f6`).
+- **Components**: Glassmorphism (유리 질감), Pill Buttons, Tooltips.
 
 ## JavaScript
-- 기존 로직은 jQuery에 의존하고 있습니다. 간단한 DOM 조작은 jQuery를 유지해도 좋으나, 복잡한 로직 추가 시에는 의존성을 줄이기 위해 **Vanilla JS (ES6+)** 사용을 권장합니다.
+- **No jQuery**: 모든 DOM 조작 및 이벤트 처리는 **Vanilla JS**를 사용하십시오.
+- **Performance**: 불필요한 리렌더링을 방지하고 성능을 최적화하십시오.
 
 # AI Behavior
-- 코드를 수정할 때는 기존 스타일(색상 테마, 폰트 등)을 해치지 않는 선에서 개선하십시오.
+- 코드를 수정할 때는 기존 스타일(Dark Theme, Inter Font 등)을 해치지 않는 선에서 개선하십시오.
 - "고도화" 요청 시, 단순 코드 정리가 아닌 사용자 경험(UX) 개선, 성능 최적화, SEO 강화 측면에서 제안하십시오.
-
