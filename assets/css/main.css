@@ -895,7 +895,7 @@ a {
 
   .stats-info h2,
   .section-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .stats-numbers {
@@ -910,6 +910,10 @@ a {
 
   .stat-item .label {
     font-size: 0.8rem;
+  }
+
+  .stats-info p {
+    font-size: 1rem;
   }
 }
 
