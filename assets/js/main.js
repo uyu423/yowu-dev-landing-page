@@ -23,7 +23,8 @@
         if (typingText) {
             const words = ["Backend Developer", "System Architect", "Tech Writer", "Amateur Drummer"];
             let wordIndex = 0;
-            let charIndex = 0;
+            // Initialize with the length of the first word since it's hardcoded in HTML
+            let charIndex = words[0].length;
             let isDeleting = false;
             let typeSpeed = 100;
 
@@ -35,9 +36,12 @@
                     charIndex--;
                     typeSpeed = 50; // Deleting speed
                 } else {
-                    typingText.textContent = currentWord.substring(0, charIndex + 1);
-                    charIndex++;
-                    typeSpeed = 100; // Typing speed
+                    // Only type if we haven't reached the end of the word
+                    if (charIndex < currentWord.length) {
+                        typingText.textContent = currentWord.substring(0, charIndex + 1);
+                        charIndex++;
+                        typeSpeed = 100; // Typing speed
+                    }
                 }
 
                 if (!isDeleting && charIndex === currentWord.length) {
@@ -54,8 +58,8 @@
                 setTimeout(type, typeSpeed);
             }
 
-            // Start typing effect
-            setTimeout(type, 1000);
+            // Start typing effect after initial delay (allow user to read first word)
+            setTimeout(type, 2000);
         }
 
         // ==========================================

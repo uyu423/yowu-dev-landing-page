@@ -258,6 +258,8 @@ a {
   background-color: var(--accent-color);
   animation: blink 1s infinite;
   margin-left: 5px;
+  height: 1em;
+  vertical-align: middle;
   -webkit-text-fill-color: var(
     --accent-color
   ); /* Override gradient for cursor */
