@@ -21,7 +21,13 @@
         // ==========================================
         const typingText = document.querySelector('.typing-text');
         if (typingText) {
-            const words = ["Backend Developer", "System Architect", "Tech Writer", "Amateur Drummer"];
+            const words = [
+                "Backend Developer",
+                "Software Engineer",
+                "System Architect",
+                "Technical Writer",
+                "Amateur Drummer"
+            ];
             let wordIndex = 0;
             // Initialize with the length of the first word since it's hardcoded in HTML
             let charIndex = words[0].length;
