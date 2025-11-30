@@ -31,6 +31,16 @@
 - **No jQuery**: 모든 DOM 조작 및 이벤트 처리는 **Vanilla JS**를 사용하십시오.
 - **Performance**: 불필요한 리렌더링을 방지하고 성능을 최적화하십시오.
 
+## Media Optimization (FFmpeg)
+- **Video**: 웹 배경용 비디오는 `ffmpeg`를 사용하여 최적화해야 합니다.
+  - **Naming Convention**: `bg-{name}-optimized.mp4`
+  - **Command**: `ffmpeg -i {input}.mp4 -vf "scale=1280:-1" -c:v libx264 -preset fast -crf 28 -an -y bg-{output}-optimized.mp4`
+  - **Specs**: 
+    - Resolution: Width 1280px (Keep aspect ratio)
+    - Codec: H.264 (`libx264`)
+    - Quality: CRF 28 (Good balance for background)
+    - Audio: Removed (`-an`)
+
 # AI Behavior
 - 코드를 수정할 때는 기존 스타일(Dark Theme, Inter Font 등)을 해치지 않는 선에서 개선하십시오.
 - "고도화" 요청 시, 단순 코드 정리가 아닌 사용자 경험(UX) 개선, 성능 최적화, SEO 강화 측면에서 제안하십시오.

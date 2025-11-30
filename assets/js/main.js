@@ -71,9 +71,11 @@
         if (video1 && video2) {
             const playlist = [
                 'videos/bg-deserteagle-optimized.mp4',
-                'videos/bg-dna-optimized.mp4',
                 'videos/bg-qwer-optimized.mp4',
-                'videos/bg-believe-optimized.mp4'
+                'videos/bg-realize-optimized.mp4',
+                'videos/bg-dna-optimized.mp4',
+                'videos/bg-deserteagle2-optimized.mp4',
+                'videos/bg-believe-optimized.mp4',
             ];
 
             let currentIndex = 0;

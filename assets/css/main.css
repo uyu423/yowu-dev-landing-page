@@ -170,7 +170,7 @@ a {
   opacity: 0; /* Default hidden */
 
   /* Filter Effect */
-  filter: brightness(0.5) blur(4px) grayscale(0.2);
+  filter: brightness(0.6) blur(4px) grayscale(0.5);
   transform: scale(1.05);
 }
 
@@ -782,6 +782,10 @@ a {
   .hero h1 {
     font-size: 2.2rem; /* 모바일에서 긴 단어도 한 줄에 나오도록 축소 */
     word-break: keep-all;
+  }
+
+  .bg-video {
+    object-position: 67% center; /* 모바일에서 비디오 오른쪽 부분이 보이도록 조정 */
   }
 
   .hero-desc {
