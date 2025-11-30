@@ -3,39 +3,54 @@
 
     document.addEventListener('DOMContentLoaded', function () {
 
-        // 1. Background Video Playlist with Fade Transition
-        const videoElement = document.getElementById('bg-video');
-        if (videoElement) {
+        // 1. Background Video Cross-fade Logic
+        const video1 = document.getElementById('video-1');
+        const video2 = document.getElementById('video-2');
+
+        if (video1 && video2) {
             const playlist = [
                 'videos/bg-deserteagle-optimized.mp4',
                 'videos/bg-dna-optimized.mp4',
                 'videos/bg-qwer-optimized.mp4',
                 'videos/bg-believe-optimized.mp4'
             ];
-            let currentVideoIndex = 0;
 
-            // 초기 영상 설정 (HTML에 하드코딩된 소스가 없을 경우 대비)
-            // videoElement.src = playlist[0]; 
+            let currentIndex = 0;
+            let activeVideo = video1;
+            let nextVideo = video2;
 
-            videoElement.addEventListener('ended', () => {
-                // 1. Fade Out
-                videoElement.classList.add('fade-out');
+            // Function to handle video transition
+            const handleVideoEnd = () => {
+                // Calculate next index
+                currentIndex = (currentIndex + 1) % playlist.length;
+                const nextSource = playlist[currentIndex];
 
-                // 2. Wait for transition, then change source & Fade In
-                setTimeout(() => {
-                    currentVideoIndex = (currentVideoIndex + 1) % playlist.length;
-                    videoElement.src = playlist[currentVideoIndex];
+                // Prepare next video
+                nextVideo.src = nextSource;
+                nextVideo.load();
 
-                    videoElement.play().then(() => {
-                        // Play success -> Fade In
-                        videoElement.classList.remove('fade-out');
-                    }).catch(e => {
-                        console.log('Video play error:', e);
-                        // Even if error, try to show video element
-                        videoElement.classList.remove('fade-out');
-                    });
-                }, 500); // Match CSS transition duration (0.5s)
-            });
+                nextVideo.play().then(() => {
+                    // Swap classes for cross-fade
+                    nextVideo.classList.add('active');
+                    activeVideo.classList.remove('active');
+
+                    // Swap references
+                    const temp = activeVideo;
+                    activeVideo = nextVideo;
+                    nextVideo = temp;
+
+                    // Re-attach event listener to new active video
+                    // (Remove from old to prevent duplicates if logic changes, though 'once' option can be used)
+                    nextVideo.removeEventListener('ended', handleVideoEnd);
+                    activeVideo.addEventListener('ended', handleVideoEnd);
+
+                }).catch(e => {
+                    console.error('Video play error:', e);
+                });
+            };
+
+            // Start loop
+            activeVideo.addEventListener('ended', handleVideoEnd);
         }
 
         // 2. Initial Fade In
@@ -61,7 +76,7 @@
 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    const navHeight = 0; // Navbar Removed
+                    const navHeight = 0;
                     const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navHeight;
 
                     window.scrollTo({

@@ -44,10 +44,11 @@
 	<body>
 		<!-- Hero Section with Background Video -->
 		<header class="hero">
-			<!-- Video Background -->
+			<!-- Video Background (Double Buffering for Cross-fade) -->
 			<div class="video-background">
 				<video
-					id="bg-video"
+					id="video-1"
+					class="bg-video active"
 					autoplay
 					muted
 					playsinline
@@ -57,6 +58,15 @@
 						src="videos/bg-deserteagle-optimized.mp4"
 						type="video/mp4"
 					/>
+				</video>
+				<video
+					id="video-2"
+					class="bg-video"
+					muted
+					playsinline
+					poster="images/bg.jpg"
+				>
+					<!-- Source will be loaded dynamically -->
 				</video>
 				<div class="video-overlay"></div>
 			</div>
@@ -158,12 +168,27 @@
 			<div class="container stats-container">
 				<div class="stats-info">
 					<span class="section-label">/ ABOUT ME</span>
-					<h2>I've been engineering<br />systems since 2015</h2>
+					<h2>
+						Engineering scalable systems<br />
+						with passion since 2016
+					</h2>
 					<p>
-						Started from a startup, now designing massive traffic
-						systems at NAVER. Experienced in Node.js, Java, Spring
-						Boot, and Cloud Architecture.
+						Currently developing high-traffic commerce backend at
+						<strong>NAVER</strong> using <strong>Kotlin</strong> &
+						<strong>Spring Boot</strong>.<br />
+						Expertise in building robust architectures with
+						<strong>Kubernetes</strong> and
+						<strong>Kafka</strong>.<br />
+						Active community contributor sharing insights via 400+
+						tech posts.
 					</p>
+					<a
+						href="https://resume.yowu.dev"
+						target="_blank"
+						class="link-arrow"
+					>
+						Read full Resume <i class="fa-solid fa-arrow-right"></i>
+					</a>
 				</div>
 
 				<div class="stats-numbers">
@@ -172,8 +197,8 @@
 						<span class="label">Years of<br />Experience</span>
 					</div>
 					<div class="stat-item">
-						<span class="number">∞</span>
-						<span class="label">Lines of<br />Code</span>
+						<span class="number">400+</span>
+						<span class="label">Tech Posts<br />Written</span>
 					</div>
 				</div>
 			</div>
