@@ -42,6 +42,26 @@
 		<link rel="shortcut icon" href="images/favicon.ico" />
 	</head>
 	<body>
+		<!-- Sticky Navigation -->
+		<nav id="navbar" class="navbar">
+			<div class="container nav-container">
+				<a href="#" class="nav-logo">Yowu.dev</a>
+				<ul class="nav-links">
+					<li><a href="#about">About</a></li>
+					<li><a href="#skills">Skills</a></li>
+					<li><a href="#projects">Projects</a></li>
+					<li>
+						<a href="https://resume.yowu.dev" target="_blank"
+							>Resume</a
+						>
+					</li>
+				</ul>
+				<div class="nav-toggle">
+					<i class="fa-solid fa-bars"></i>
+				</div>
+			</div>
+		</nav>
+
 		<!-- Hero Section with Background Video -->
 		<header class="hero">
 			<!-- Video Background (Double Buffering for Cross-fade) -->
@@ -84,15 +104,23 @@
 
 					<!-- Text -->
 					<h1>
-						I'm Yowu, a<br /><span class="highlight"
-							>Backend Developer</span
-						>
+						I'm Yowu, a<br />
+						<span class="highlight typing-container">
+							<span class="typing-text">Backend Developer</span>
+							<span class="cursor">|</span>
+						</span>
 					</h1>
 					<p class="hero-desc">
-						Working at <strong>NAVER</strong>.<br />
+						Working at
+						<a
+							href="https://www.navercorp.com/"
+							target="_blank"
+							class="text-link"
+							><strong>NAVER</strong></a
+						>.<br />
 						Focusing on robust back-end architecture & system
 						design.<br />
-						I build scalable services that users love.
+						I build scalable services and play Drums in a band.
 					</p>
 
 					<!-- Unified Links -->
@@ -164,7 +192,7 @@
 		</header>
 
 		<!-- About / Stats Section -->
-		<section id="about" class="stats-section">
+		<section id="about" class="stats-section reveal-section">
 			<div class="container stats-container">
 				<div class="stats-info">
 					<span class="section-label">/ ABOUT ME</span>
@@ -193,16 +221,144 @@
 
 				<div class="stats-numbers">
 					<div class="stat-item">
-						<span class="number">10+</span>
+						<span class="number" data-target="10">0</span>
 						<span class="label">Years of<br />Experience</span>
 					</div>
 					<div class="stat-item">
-						<span class="number">400+</span>
+						<span class="number" data-target="400">0</span>
 						<span class="label">Tech Posts<br />Written</span>
 					</div>
 				</div>
 			</div>
 		</section>
+
+		<!-- Skills Section (Terminal Style) -->
+		<section id="skills" class="skills-section reveal-section">
+			<div class="container">
+				<div class="terminal-window">
+					<div class="terminal-header">
+						<div class="terminal-buttons">
+							<span class="close"></span>
+							<span class="minimize"></span>
+							<span class="maximize"></span>
+						</div>
+						<div class="terminal-title">yowu@dev:~/skills</div>
+					</div>
+					<div class="terminal-body">
+						<div class="terminal-line">
+							<span class="prompt">yowu@dev:~$</span> cat
+							languages.txt
+						</div>
+						<div class="terminal-output">
+							Java, Kotlin, Python, JavaScript, TypeScript, Go
+						</div>
+
+						<div class="terminal-line">
+							<span class="prompt">yowu@dev:~$</span> cat
+							frameworks.txt
+						</div>
+						<div class="terminal-output">
+							Spring Boot, Django, FastAPI, React, Node.js
+						</div>
+
+						<div class="terminal-line">
+							<span class="prompt">yowu@dev:~$</span> cat
+							infrastructure.txt
+						</div>
+						<div class="terminal-output">
+							AWS, Kubernetes, Docker, Kafka, Redis, MySQL,
+							MongoDB
+						</div>
+
+						<div class="terminal-line">
+							<span class="prompt">yowu@dev:~$</span>
+							<span class="cursor-block"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Projects Section -->
+		<section id="projects" class="projects-section reveal-section">
+			<div class="container">
+				<span class="section-label">/ PROJECTS</span>
+				<h2 class="section-title">Featured Projects</h2>
+
+				<div class="projects-grid">
+					<!-- Project 1 -->
+					<div class="project-card">
+						<div class="project-content">
+							<div class="project-icon">
+								<i class="fa-solid fa-server"></i>
+							</div>
+							<h3>Commerce Platform Migration</h3>
+							<p>
+								Monolith to Microservices migration for
+								high-traffic commerce platform. Improved
+								scalability and reduced deployment time by 60%.
+							</p>
+							<div class="project-tags">
+								<span>Spring Cloud</span>
+								<span>K8s</span>
+								<span>Kafka</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Project 2 -->
+					<div class="project-card">
+						<div class="project-content">
+							<div class="project-icon">
+								<i class="fa-solid fa-bolt"></i>
+							</div>
+							<h3>Real-time Event Processor</h3>
+							<p>
+								High-throughput event processing system handling
+								10k+ events/sec. Implemented using reactive
+								programming patterns.
+							</p>
+							<div class="project-tags">
+								<span>WebFlux</span>
+								<span>Redis</span>
+								<span>Netty</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Project 3 -->
+					<div class="project-card">
+						<div class="project-content">
+							<div class="project-icon">
+								<i class="fa-solid fa-code-branch"></i>
+							</div>
+							<h3>DevOps Pipeline Automation</h3>
+							<p>
+								Automated CI/CD pipeline establishment.
+								Integrated security scanning and automated
+								canary deployments.
+							</p>
+							<div class="project-tags">
+								<span>Jenkins</span>
+								<span>ArgoCD</span>
+								<span>Terraform</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="footer">
+			<div class="container">
+				<p>&copy; 2025 Yowu. All rights reserved.</p>
+				<div class="footer-links">
+					<a href="mailto:me@yowu.dev">Contact</a>
+					<a href="https://github.com/uyu423">GitHub</a>
+				</div>
+			</div>
+		</footer>
 
 		<script src="assets/js/main.js"></script>
 	</body>
