@@ -75,15 +75,22 @@
         const video2 = document.getElementById('video-2');
 
         if (video1 && video2) {
+            // Check if mobile device (width <= 768px matches CSS breakpoint)
+            const isMobile = window.innerWidth <= 768;
+            const suffix = isMobile ? '-mobile.mp4' : '-optimized.mp4';
+
             const playlist = [
-                'videos/bg-deserteagle-optimized.mp4',
-                'videos/bg-qwer-optimized.mp4',
-                'videos/bg-realize-optimized.mp4',
-                'videos/bg-dna-optimized.mp4',
-                'videos/bg-deserteagle2-optimized.mp4',
-                'videos/bg-believe-optimized.mp4',
+                `videos/bg-deserteagle${suffix}`,
+                `videos/bg-qwer${suffix}`,
+                `videos/bg-realize${suffix}`,
+                `videos/bg-dna${suffix}`,
+                `videos/bg-deserteagle2${suffix}`,
+                `videos/bg-believe${suffix}`,
             ];
 
+            // Update initial video source if needed (e.g. if loaded via HTML but needs switching)
+            // Note: HTML <source> handles initial load, but this ensures playlist consistency
+            
             let currentIndex = 0;
             let activeVideo = video1;
             let nextVideo = video2;

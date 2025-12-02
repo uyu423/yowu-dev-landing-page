@@ -5,9 +5,10 @@
 :root {
   /* Colors */
   --bg-color: #161618;
-  --bg-secondary: #1c1c1f;
-  --bg-terminal: #1e1e1e;
-  --bg-terminal-header: #2d2d2d;
+  --bg-unified: rgba(28, 28, 31, 0.75); /* Unified transparent background */
+  --bg-secondary: var(--bg-unified);
+  --bg-terminal: var(--bg-unified);
+  --bg-terminal-header: rgba(40, 40, 40, 0.9); /* Slightly darker for header */
 
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.75);
@@ -23,8 +24,10 @@
   --glass-hover: rgba(255, 255, 255, 0.2);
 
   --border-dark: #333;
-  --overlay-start: rgba(10, 10, 12, 0.3);
-  --overlay-end: rgba(10, 10, 12, 0.8);
+  /* Unified overlay transparency - 모든 섹션에서 동일한 투명도 사용 */
+  --overlay-unified: rgba(10, 10, 12, 0.55); /* 단일 투명도 값으로 통일 */
+  --overlay-start: var(--overlay-unified);
+  --overlay-end: var(--overlay-unified);
 
   /* Terminal Colors */
   --terminal-close: #ff5f56;
@@ -95,9 +98,12 @@ a {
   justify-content: center;
 }
 
-/* Footer Exception */
-.footer {
-  scroll-snap-align: end; /* Footer는 마지막 섹션 끝에 붙도록 */
+/* 모바일 반응형 Footer 조정 */
+.footer-integrated {
+  flex-direction: column-reverse; /* 아이콘 위, 카피라이트 아래 */
+  gap: 1.5rem;
+  text-align: center;
+  margin-top: 3rem;
 }
 
 /* Navbar */
@@ -201,11 +207,7 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    var(--overlay-start) 0%,
-    var(--overlay-end) 100%
-  );
+  background: var(--overlay-unified); /* 그라데이션 제거, 단일 투명도 사용 */
   z-index: 2;
   pointer-events: none;
 }
@@ -452,7 +454,7 @@ a {
 .stats-section {
   background-color: transparent;
   padding: var(--section-padding);
-  border-top: 1px solid var(--glass-border);
+  border-top: none;
   position: relative;
   z-index: 2;
 }
@@ -466,7 +468,7 @@ a {
 .stats-info {
   width: 100%;
   max-width: 100%;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-unified);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   padding: 3rem;
@@ -574,25 +576,17 @@ a {
   z-index: 2;
 }
 
+/* 
 .skills-video-overlay,
 .stats-video-overlay,
 .projects-video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    var(--overlay-start) 0%,
-    var(--overlay-end) 100%
-  );
-  z-index: 1;
-  pointer-events: none;
-}
+  display: none; 
+} 
+Removed individual section overlays to prevent double darkening
+*/
 
 .terminal-window {
-  background-color: var(--bg-terminal);
+  background-color: var(--bg-unified);
   border-radius: 12px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   overflow: hidden;
@@ -602,6 +596,7 @@ a {
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  backdrop-filter: blur(10px); /* Add glass effect */
 }
 
 .terminal-header {
@@ -683,8 +678,18 @@ a {
 .projects-section {
   padding: var(--section-padding);
   background-color: transparent;
-  border-top: 1px solid var(--glass-border);
+  border-top: none;
   position: relative;
+  /* 컨테이너 높이 확보를 위해 flex 사용 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container flex 설정 추가 */
+.projects-section .container {
+  flex: 1; /* 남은 높이 모두 차지 */
+  display: flex;
+  flex-direction: column;
 }
 
 .section-title {
@@ -697,16 +702,19 @@ a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  /* Footer가 밀어내도록 grid가 차지하는 공간 유연하게 */
+  margin-bottom: 2rem;
 }
 
 .project-card {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-unified);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   padding: 2rem;
   transition: all 0.3s ease;
   height: 100%;
   display: block; /* For a tags */
+  backdrop-filter: blur(10px);
 }
 
 .project-card:hover {
@@ -757,30 +765,35 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Footer */
-.footer {
-  padding: 3rem 0;
-  background-color: var(--bg-color);
-  border-top: 1px solid var(--glass-border);
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  position: relative;
-  z-index: 10;
-}
-
-.footer .container {
+/* Integrated Footer */
+.footer-integrated {
+  margin-top: auto; /* 상단 여백을 자동으로 채워 바닥에 붙임 */
+  padding-top: 2rem;
+  /* border-top: 1px solid rgba(255, 255, 255, 0.1); */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  width: 100%; /* 너비 확보 */
 }
 
-.footer-links {
+.footer-integrated .footer-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
-.footer-links a:hover {
-  color: var(--accent-color);
+/* Small Icon Button for Footer */
+.btn-icon.small {
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.btn-icon.small:hover {
+  background-color: var(--accent-color);
+  color: white;
 }
 
 /* Scroll Reveal Animation */
@@ -900,7 +913,51 @@ a {
 
   .projects-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.5rem; /* 카드 간격 복구 */
+    display: flex;
+    flex-direction: column;
+    /* 스크롤 스냅 컨테이너 설정 */
+    scroll-snap-type: y mandatory;
+    padding: 1rem 0; /* 위아래 여백 */
+  }
+
+  .projects-section {
+    padding: var(--section-padding-mobile); /* 패딩 복구 */
+    scroll-snap-align: start;
+  }
+
+  .projects-section .container {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .projects-section .section-label,
+  .projects-section .section-title {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .projects-section .section-label {
+    margin-top: 0;
+  }
+
+  /* 모바일 카드 스타일 복구 및 스냅 적용 */
+  .project-card {
+    min-height: auto; /* 100vh 제거 */
+    height: auto;
+    scroll-snap-align: center; /* 화면 중앙에 스냅 */
+    scroll-snap-stop: always;
+    border-radius: 16px; /* 둥근 모서리 복구 */
+    margin: 0;
+    border: 1px solid var(--glass-border); /* 테두리 복구 */
+    display: block;
+    background-color: var(--bg-unified);
+    padding: 2rem;
+  }
+
+  /* 첫 번째 카드 마진 제거 */
+  .project-card:first-child {
+    margin-top: 0;
   }
 
   .stats-info h2,
