@@ -88,8 +88,28 @@
                 `videos/bg-believe${suffix}`,
             ];
 
-            // Update initial video source if needed (e.g. if loaded via HTML but needs switching)
-            // Note: HTML <source> handles initial load, but this ensures playlist consistency
+            // Video Preloading Logic
+            const preloadVideos = () => {
+                playlist.forEach(url => {
+                    // Use fetch to trigger browser caching
+                    fetch(url).then(response => {
+                        if (!response.ok) throw new Error('Network response was not ok');
+                        // The response is now in the browser cache
+                    }).catch(err => {
+                        console.warn('Failed to preload video:', url, err);
+                    });
+                });
+            };
+
+            // Start preloading after the page has fully loaded to avoid blocking critical resources
+            window.addEventListener('load', () => {
+                // Use requestIdleCallback if available, otherwise setTimeout
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(() => preloadVideos());
+                } else {
+                    setTimeout(preloadVideos, 1000);
+                }
+            });
             
             let currentIndex = 0;
             let activeVideo = video1;
