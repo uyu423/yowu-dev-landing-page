@@ -58,7 +58,7 @@
 html {
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory; /* Full page scroll snap */
-  scroll-padding-top: 0;
+  scroll-padding-top: var(--nav-height); /* 네비게이션 높이만큼 패딩 확보 */
 }
 
 body {
@@ -838,8 +838,10 @@ Removed individual section overlays to prevent double darkening
 
   /* Hero Section */
   .hero {
-    min-height: auto;
-    padding: 6rem 0;
+    min-height: 100dvh; /* 모바일 브라우저 주소창 고려한 전체 높이 */
+    padding: 6rem 0 8rem 0; /* 하단 패딩을 늘려 다음 섹션과 간격 확보 */
+    align-items: center; /* 수직 중앙 정렬 */
+    display: flex;
   }
 
   .hero h1 {
@@ -897,6 +899,8 @@ Removed individual section overlays to prevent double darkening
   /* Stats Section */
   .stats-section {
     padding: var(--section-padding-mobile);
+    min-height: auto; /* 내용 길이에 맞춰 늘어나도록 */
+    padding-top: 6rem; /* 상단 여백 추가 */
   }
 
   .stats-container {

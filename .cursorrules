@@ -33,13 +33,21 @@
 
 ## Media Optimization (FFmpeg)
 - **Video**: 웹 배경용 비디오는 `ffmpeg`를 사용하여 최적화해야 합니다.
-  - **Naming Convention**: `bg-{name}-optimized.mp4`
-  - **Command**: `ffmpeg -i {input}.mp4 -vf "scale=1280:-1" -c:v libx264 -preset fast -crf 28 -an -y bg-{output}-optimized.mp4`
-  - **Specs**: 
-    - Resolution: Width 1280px (Keep aspect ratio)
-    - Codec: H.264 (`libx264`)
-    - Quality: CRF 28 (Good balance for background)
-    - Audio: Removed (`-an`)
+  - **Desktop (Optimized)**:
+    - **Naming**: `bg-{name}-optimized.mp4`
+    - **Command**: `ffmpeg -i {input}.mp4 -vf "scale=1280:-1" -c:v libx264 -preset fast -crf 28 -an -y bg-{output}-optimized.mp4`
+  - **Mobile (Lightweight)**:
+    - **Naming**: `bg-{name}-mobile.mp4`
+    - **Command**: `ffmpeg -i {input}.mp4 -vf "scale=-2:360" -c:v libx264 -preset fast -crf 28 -an -y bg-{output}-mobile.mp4`
+    - **Logic**: JS에서 `window.innerWidth <= 768` 일 때 모바일 버전을 로드.
+
+## Design System Rules
+- **Transparency**: 모든 섹션 컨테이너(`stats-info`, `terminal-window`, `project-card` 등)는 동일한 배경 투명도 변수(`--bg-unified`)를 사용해야 합니다.
+- **Overlay**: 배경 비디오 위의 오버레이는 단일 요소(`.video-overlay`)만 사용하며, 섹션별 별도 오버레이는 중첩 문제 방지를 위해 사용하지 않습니다.
+- **Scroll Snap**:
+  - 모바일 리스트(예: Projects)는 `scroll-snap-type: y mandatory`를 사용하여 카드 단위 스크롤 경험을 제공합니다.
+  - `html` 태그에 `scroll-padding-top`을 적용하여 네비게이션 바와의 겹침을 방지합니다.
+- **Footer**: 별도의 Footer 섹션 대신 마지막 콘텐츠 섹션 하단에 통합(`footer-integrated`)하는 방식을 권장합니다.
 
 # AI Behavior
 - 코드를 수정할 때는 기존 스타일(Dark Theme, Inter Font 등)을 해치지 않는 선에서 개선하십시오.
